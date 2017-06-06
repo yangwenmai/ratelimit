@@ -1,13 +1,15 @@
-package main
+package ratelimit
 
-import "fmt"
+// RateLimiter 限速器
+type RateLimiter struct {
+}
 
-func main() {
-	fmt.Println("rate-limit-go")
+// New 创建RateLimiter实例
+func New() *RateLimiter {
+	return &RateLimiter{}
 }
 
 // Limit 限制
-func Limit() bool {
-	fmt.Println("limit")
+func (rl *RateLimiter) Limit() bool {
 	return false
 }
