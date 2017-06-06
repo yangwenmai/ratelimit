@@ -1,0 +1,10 @@
+language: go
+script: make testall
+sudo: false
+go:
+  - 1.8.3
+  - master
+install:
+  - go get github.com/onsi/ginkgo github.com/onsi/gomega
+  - mkdir -p $GOPATH/src/github.com/yangwenmai
+  - cd $GOPATH/src/github.com/yangwenmai/ratelimit

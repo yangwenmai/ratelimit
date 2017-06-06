@@ -1,0 +1,7 @@
+bin
+pkg
+*.swp
+.DS_Store
+.idea
+*.iml
+.vscode/
