@@ -1,8 +1,7 @@
 default: test
 
 testdeps:
-	@go get github.com/onsi/ginkgo
-	@go get github.com/onsi/gomega
+	@go get github.com/smartystreets/goconvey
 
 test: testdeps
 	@go test ./...
