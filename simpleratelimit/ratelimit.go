@@ -1,4 +1,4 @@
-package ratelimit
+package simpleratelimit
 
 import (
 	"sync/atomic"

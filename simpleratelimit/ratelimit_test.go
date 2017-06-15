@@ -1,4 +1,4 @@
-package ratelimit
+package simpleratelimit
 
 import (
 	"testing"
@@ -8,7 +8,7 @@ import (
 )
 
 func TestLimit(t *testing.T) {
-	Convey("初始化一个限制，然后进行测试限速: ", t, func() {
+	Convey("start testing limit", t, func() {
 		rl := New(1, time.Second)
 		for i := 0; i < 10; i++ {
 			if i == 0 {
@@ -18,7 +18,7 @@ func TestLimit(t *testing.T) {
 			}
 		}
 	})
-	Convey("第一次进行限速后，每次限速之前再重置，检查限速是否通过: ", t, func() {
+	Convey("start testing undo", t, func() {
 		rl := New(1, time.Second)
 		for i := 0; i < 10; i++ {
 			if i == 0 {
@@ -32,7 +32,7 @@ func TestLimit(t *testing.T) {
 }
 
 func BenchmarkLimit(b *testing.B) {
-	Convey("开始压测限速", b, func() {
+	Convey("start testing benchmark", b, func() {
 		rl := New(1, time.Second)
 		for i := 0; i < b.N; i++ {
 			rl.Limit()
