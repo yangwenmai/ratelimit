@@ -1,0 +1,15 @@
+mode: count
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:18.52,20.14 2 2
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:23.2,23.14 1 2
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:27.2,34.3 1 2
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:20.14,22.3 1 0
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:23.14,25.3 1 0
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:38.37,46.54 5 20
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:51.2,51.23 1 20
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:56.2,57.14 2 11
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:46.54,49.3 2 11
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:51.23,53.3 1 9
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:61.45,64.2 2 0
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:67.31,70.54 2 9
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:70.54,72.3 1 0
+github.com/yangwenmai/ratelimit/simpleratelimit/ratelimit.go:76.24,78.2 1 22

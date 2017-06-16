@@ -1,10 +1,29 @@
 language: go
-script: make testall
 sudo: false
+
+notifications:
+  email:
+    recipients:
+      - yangwen.yw@gmail.com
+  on_success: change
+  on_failure: always
+
 go:
   - 1.8.3
   - master
+
 install:
+  - go get github.com/go-playground/overalls
+  - go get github.com/mattn/goveralls
   - go get github.com/smartystreets/goconvey
   - mkdir -p $GOPATH/src/github.com/yangwenmai
   - cd $GOPATH/src/github.com/yangwenmai/ratelimit
+
+script:
+    - overalls -project=github.com/yangwenmai/ratelimit -covermode=count -ignore='.git,_vendor'
+    - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
+    - go test ./...
+
+env:
+  global:
+    secure: "bopJ2qeaADkDDOTDOPfYiO3mHigtyUBM3Ec8vhc9jkQWQ9Spmd4rXnKjE0ry7ZWTBdLze5Fkgga83/5YuRaecLKYPLtYLXIF1KioJvJiuTlAkMVrlvuuOMR7YN1qq4hHybeWZI/YEvj+fPjm0VRFU7syrLzsvIX0wuhDOrW5fvDOBW/Xn0isZ0UZSLx/AmU5TJp8lYG/WMPDUSyyxMNDOT4Kv0ZExMIXlIEtzFJXSb8yuOAZVIVJ4IiFXjDeMIrc7krzQa/sqQb2OujjjJqrDqdQTcbaPpGL4q+eewXdVhG6+JQlK6pa8K2LfQTERD0fVXcxrF3AXsmOiqh4/aLpez69pqYebiwwm2SK+hcwm2AZiUg2Phrvk0gqyoDRWSEV2AgOeMxLdSWyAWjreA2H3YtbvLpe2RCXiv05WS0BYvUwmFxYUDgq679AzZ1YHZRQTZTtMmCciunQekBLb+P+qbmuyv7h60mTYGrfZLRjoPUreQ0MDqwEjB8f0mFMrq66LPlMThbsvwzUFqtfBbclWP+HVLiRnd0kKFkV0HnBt15dvYQxr80Oad+4TYYJ0WWiuy/LV9D44BDgL59CKOTIu7jd0yjP5gmBO7wJhx0UhZ8f/SZPNX8GXXx7tfmjpM2H9aA84Zf+Bl+kV2/Ra2NiTWeroblsEutv795gLFwF0i4="
