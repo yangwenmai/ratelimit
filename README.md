@@ -8,7 +8,7 @@
 
 漏桶算法思路很简单，水（请求）先进入到漏桶里，漏桶以一定的速度出水，当水流入速度过大会直接溢出，可以看出漏桶算法能强行限制数据的传输速率。
 
-![leaky-bucket](https://github.com/yangwenmai/ratelimit/blob/master/leaky-bucket.png)
+![leaky-bucket](https://github.com/yangwenmai/ratelimit/blob/master/doc/leaky-bucket.png)
 
 漏桶算法示意图
 
@@ -18,7 +18,7 @@
 
 令牌桶算法的原理是系统会以一个恒定的速度往桶里放入令牌，而如果请求需要被处理，则需要先从桶里获取一个令牌，当桶里没有令牌可取时，则拒绝服务。
 
-![token-bucket](https://github.com/yangwenmai/ratelimit/blob/master/token-bucket.jpg)
+![token-bucket](https://github.com/yangwenmai/ratelimit/blob/master/doc/token-bucket.jpg)
 
 令牌桶算法示意图
 
@@ -30,17 +30,31 @@
 package main
 
 import (
-  "fmt"
-  "github.com/yangwenmai/ratelimit"
+	"log"
+	"time"
+
+	"github.com/yangwenmai/ratelimit/leakybucket"
+	"github.com/yangwenmai/ratelimit/simpleratelimit"
 )
 
 func main() {
-    rl := ratelimit.New()
-    if rl.Limit() {
-        fmt.Println("Limit")
-    } else {
-        fmt.Println("Pass")
-    }
+    // rate limit: simple
+	rl := simpleratelimit.New(10, time.Second)
+
+	for i := 0; i < 100; i++ {
+		log.Printf("limit result: %v\n", rl.Limit())
+	}
+	log.Printf("limit result: %v\n", rl.Limit())
+
+    // rate limit: leaky-bucket
+	lb := leakybucket.New()
+	b, err := lb.Create("leaky_bucket", 10, time.Second)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Printf("bucket capacity:%v", b.Capacity())
+
+    // rate limit: token-bucket
 }
 ```
 
