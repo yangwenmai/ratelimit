@@ -10,7 +10,6 @@ notifications:
 
 go:
   - 1.8.3
-  - master
 
 install:
   - go get github.com/go-playground/overalls
