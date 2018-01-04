@@ -2,6 +2,10 @@
 
 基于令牌桶算法和漏桶算法来实现的限速限流，Golang实现。
 
+## Stargazers over time
+
+[![Stargazers over time](https://starcharts.herokuapp.com/yangwenmai/ratelimit.svg)](https://starcharts.herokuapp.com/yangwenmai/ratelimit)
+
 # 算法介绍
 
 ## 漏桶算法
